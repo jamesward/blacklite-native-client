@@ -22,10 +22,6 @@ blacklite-reader \
   /tmp/blacklite/archive.2020-11-03-07-22.669.db
 ```
 
-## Still dies with exception
-
-Anything with a "where clause" dies.
-
 ```
 blacklite-reader -c --where="limit > 10000" /tmp/blacklite/archive.db
 ```
@@ -43,7 +39,10 @@ zstd -d zarchive.zst
 
 Generate Native Image Configs
 ```
-JAVA_HOME=~/.gradle/caches/com.palantir.graal/20.3.0/11/graalvm-ce-java11-20.3.0 \
-JAVA_OPTS=-agentlib:native-image-agent=config-output-dir=src/main/resources/META-INF/native-image \
-build/install/blacklite-reader/bin/blacklite-reader /tmp/blacklite/archive.db
+./gradlew install
+
+JAVA_HOME=~/.gradle/caches/com.palantir.graal/20.2.0/8/graalvm-ce-java8-20.2.0 \
+  JAVA_OPTS=-agentlib:native-image-agent=config-output-dir=src/main/resources/META-INF/native-image \
+  build/install/blacklite-reader/bin/blacklite-reader \
+  /tmp/blacklite/archive.db
 ```

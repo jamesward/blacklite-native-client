@@ -12,8 +12,8 @@ repositories {
 	jcenter()
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_11
-java.targetCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.targetCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
 	// Get rid of some unneeded dependencies here
@@ -31,8 +31,8 @@ dependencies {
 application.mainClassName = "com.tersesystems.blacklite.reader.BlackliteReader"
 
 graal {
-	graalVersion("20.3.0")
-	javaVersion("11")
+	graalVersion("20.2.0")
+	javaVersion("8")
 	mainClass(application.mainClassName)
 	outputName("blacklite-reader")
 	option("--verbose")
@@ -40,6 +40,4 @@ graal {
 	option("--no-fallback")
 	option("-H:+ReportExceptionStackTraces")
 	option("-H:+PrintClassInitialization")
-	option("-J--add-exports=java.base/jdk.internal.perf=ALL-UNNAMED")
-	option("-J--add-opens=java.base/jdk.internal.perf=ALL-UNNAMED")
 }

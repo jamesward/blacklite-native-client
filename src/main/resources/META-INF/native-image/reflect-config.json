@@ -20,9 +20,6 @@
   "name":"java.security.MessageDigestSpi"
 },
 {
-  "name":"java.security.SecureRandomParameters"
-},
-{
   "name":"java.sql.Connection"
 },
 {
@@ -108,6 +105,10 @@
 },
 {
   "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.Sun",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 }
 ]

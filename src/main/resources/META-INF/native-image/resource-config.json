@@ -1,9 +1,10 @@
 {
-  "resources":{
-  "includes":[
+  "resources":[
     {"pattern":"\\QMETA-INF/maven/org.xerial/sqlite-jdbc/pom.properties\\E"}, 
     {"pattern":"\\QMETA-INF/services/java.sql.Driver\\E"}, 
+    {"pattern":"\\QMETA-INF/services/jdk.vm.ci.hotspot.HotSpotJVMCIBackendFactory\\E"}, 
+    {"pattern":"\\QMETA-INF/services/jdk.vm.ci.services.JVMCIServiceLocator\\E"}, 
     {"pattern":"\\Qorg/sqlite/native/Linux/x86_64/libsqlitejdbc.so\\E"}
-  ]},
+  ],
   "bundles":[]
 }
