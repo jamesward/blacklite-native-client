@@ -41,6 +41,7 @@ Generate Native Image Configs
 ```
 ./gradlew install
 
+# Note: Fails on Linux with GraalVM 20.3.0
 JAVA_HOME=~/.gradle/caches/com.palantir.graal/20.2.0/8/graalvm-ce-java8-20.2.0 \
   JAVA_OPTS=-agentlib:native-image-agent=config-output-dir=src/main/resources/META-INF/native-image \
   build/install/blacklite-reader/bin/blacklite-reader \

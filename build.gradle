@@ -31,7 +31,7 @@ dependencies {
 application.mainClassName = "com.tersesystems.blacklite.reader.BlackliteReader"
 
 graal {
-	graalVersion("20.2.0")
+	graalVersion("20.3.0")
 	javaVersion("8")
 	mainClass(application.mainClassName)
 	outputName("blacklite-reader")
