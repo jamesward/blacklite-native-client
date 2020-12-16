@@ -1,6 +1,6 @@
 plugins {
-	id "java"
-	id "com.github.johnrengelman.shadow" version "6.1.0"
+	id "application"
+	id "com.palantir.graal" version "0.7.2"
 }
 
 plugins {
@@ -12,34 +12,34 @@ repositories {
 	jcenter()
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_11
+java.targetCompatibility = JavaVersion.VERSION_11
 
 dependencies {
 	// Get rid of some unneeded dependencies here
-	implementation 'org.graylog2.repackaged:natty:0.8-1'
+	implementation "org.graylog2.repackaged:natty:0.8-1"
 
 	// Need to use https://picocli.info/picocli-on-graalvm.html
-	implementation 'info.picocli:picocli:4.5.2'
-	annotationProcessor 'info.picocli:picocli-codegen:4.5.2'
+	implementation "info.picocli:picocli:4.5.2"
+	annotationProcessor "info.picocli:picocli-codegen:4.5.2"
 
-	implementation("org.xerial:sqlite-jdbc:3.32.3.2")
+	implementation "org.xerial:sqlite-jdbc:3.32.3.2"
 
-	compileOnly("com.oracle.substratevm:svm:19.2.1")
-	implementation("org.graalvm.sdk:graal-sdk:20.2.0")
-
-	testImplementation("junit:junit:4.12")
+	testImplementation "junit:junit:4.12"
 }
 
-def mainClassName = "com.tersesystems.blacklite.reader.BlackliteReader"
+application.mainClassName = "com.tersesystems.blacklite.reader.BlackliteReader"
 
-jar {
-	manifest {
-		attributes "Main-Class": mainClassName
-	}
-}
-
-task run(type: JavaExec, dependsOn: classes) {
-	main = mainClassName
-	classpath sourceSets.main.runtimeClasspath
-	classpath configurations.runtime
+graal {
+	graalVersion("20.3.0")
+	javaVersion("11")
+	mainClass(application.mainClassName)
+	outputName("blacklite-reader")
+	option("--verbose")
+	option("--no-server")
+	option("--no-fallback")
+	option("-H:+ReportExceptionStackTraces")
+	option("-H:+PrintClassInitialization")
+	option("-J--add-exports=java.base/jdk.internal.perf=ALL-UNNAMED")
+	option("-J--add-opens=java.base/jdk.internal.perf=ALL-UNNAMED")
 }
